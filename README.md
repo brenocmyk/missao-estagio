@@ -1,35 +1,42 @@
-# Missao Estágio - Envio de mensagens no WhatsApp.
+# Envio de mensagens no WhatsApp
 
-Projeto desenvolvido em Python usando Supabase e Z-API.
+Script Python que lê contatos do Supabase e dispara mensagens via Z-API.
 
 ## Setup
 
-Crie a tabela contacts no Supabase, vá no sql editor e cole:
+Crie a tabela 'contacts' no Supabase pelo SQL Editor:
 
-sql
+```sql
 create table contacts (
-  id        int,
-  nome      text,
-  telefone  text
+  id       int,
+  nome     text,
+  telefone text
 );
+```
 
-Atençao: na hora de add o telefone, ele precisa estar no formato internacional sem "+", ex: "5521999999999", se não o z-api NÃO envia.
+> **Atenção:** o telefone precisa estar no formato internacional sem '+', ex: '5521999999999' caso contrário a Z-API não envia!!
 
 ## Variáveis de ambiente
 
-Crie um arquivo .env com essas informaçoes:
+Crie um arquivo '.env' na raiz do projeto:
 
+```env
 SUPABASE_URL=
 SUPABASE_KEY=
 ZAPI_INSTANCE=
 ZAPI_TOKEN=
+```
 
-(Você pega essas infos pelo dashboard do supabase e abrindo qualquer instancia web no z-api)
+> Você encontra essas infos no dashboard do Supabase e abrindo qualquer instância web no Z-API.
 
 ## Instalação
 
+```
 pip install -r requirements.txt
+```
 
 ## Executar
 
+```
 python main.py
+```
