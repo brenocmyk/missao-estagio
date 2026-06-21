@@ -2,7 +2,6 @@ from supabase import create_client
 import os
 from dotenv import load_dotenv
 from zapi import enviar_msg
-
 load_dotenv()
 
 url = os.getenv("SUPABASE_URL")
@@ -21,8 +20,18 @@ for contato in response.data:
     nome = contato["nome"]
     telefone = contato["telefone"]
     mensagem = f"Olá, {nome} tudo bem com você?"
-    resultado = enviar_msg(
-        telefone,
-        mensagem
-    ) 
-print(resultado)
+    try:
+        resultado = enviar_msg(
+            telefone,
+            mensagem
+        )
+        print(
+            f"Mensagem enviada para {nome}:",
+            resultado
+        )
+    except Exception as erro:
+        print(
+            f"Erro ao enviar para {nome}:",
+            erro
+        )
+    
